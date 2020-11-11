@@ -21,7 +21,7 @@ public class Menu {
             "Gurke", 800);
     public static Map<String, Integer> sauces = Map.of(
             "Ketchup", 900,
-            "Mayo", 100);
+            "Mayo", 910);
 
     public static Map<String, Integer> getAllArticles() {
         Map<String, Integer> articles = new HashMap<>();
