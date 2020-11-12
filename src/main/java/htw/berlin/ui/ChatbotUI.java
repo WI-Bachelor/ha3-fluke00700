@@ -21,7 +21,7 @@ public class ChatbotUI {
         String inputLine = input.ask("Willkommen beim Burgerbot! Was moechtest du gerne bestellen?");
         while (!(inputLine.equals("Bestellung abschliessen") || inputLine.equals("Auf Wiedersehen"))) {
             List<Integer> articles = articleIdsFromOrder(inputLine);
-            if(articles.isEmpty()) {
+            if (articles.isEmpty()) {
                 inputLine = input.ask("Entschuldigung, ich habe dich nicht verstanden. Waehle aus folgenden Zutaten: "
                         + Menu.printAllArticles());
             } else {
@@ -37,15 +37,15 @@ public class ChatbotUI {
     // nur public zum einfacheren Testen
     public List<Integer> articleIdsFromOrder(String inputLine) {
         Set<String> keywords = Menu.getAllArticles().keySet();
-        Map<String,Integer> wantedIngredient = parser.countKeywords(inputLine, keywords);
+        Map<String, Integer> wantedIngredient = parser.countKeywords(inputLine, keywords);
         ArrayList<Integer> ingredientNumber = new ArrayList<Integer>();
 
-        wantedIngredient.forEach((key , val) ->
-        {
-                if(val!=0) {
-            ingredientNumber.add(Menu.getAllArticles().get(key));
-            }
-        }
+        wantedIngredient.forEach((key, val) ->
+                {
+                    if (val != 0) {
+                        ingredientNumber.add(Menu.getAllArticles().get(key));
+                    }
+                }
         );
         Collections.sort(ingredientNumber);
         return ingredientNumber;

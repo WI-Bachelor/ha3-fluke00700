@@ -26,6 +26,7 @@ public class InputParserTest {
                 "Avocado", 0);
         assertEquals(expected, classUnderTest.countKeywords(inputLine, keywords));
     }
+
     @Test
     void canCountKeywords2() {
         InputParser classUnderTest = new CommaAndWhitespaceSplittingInputParser();
@@ -55,11 +56,6 @@ public class InputParserTest {
                 "Avocado", 0);
         assertEquals(expected, classUnderTest.countKeywords(inputLine, keywords));
     }
-
-
-
-
-
 
 
 }

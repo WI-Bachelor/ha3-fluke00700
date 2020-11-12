@@ -6,6 +6,7 @@ import htw.berlin.service.FakeBurgerBuilder;
 import htw.berlin.ui.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.mockito.AdditionalMatchers.*;
 import static org.mockito.ArgumentMatchers.*;
 
@@ -86,21 +87,10 @@ public class ChatbotUITest {
         ));
         ChatbotUI ui = new ChatbotUI(null, null, parser);
 
-        var expected = Arrays.asList(100,300,700,900,910);
+        var expected = Arrays.asList(100, 300, 700, 900, 910);
         var actual = ui.articleIdsFromOrder("Ich haette gerne einen Burger mit Rindfleisch,Ketchup und Mayo!!!!!!");
         assertEquals(expected, actual);
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
