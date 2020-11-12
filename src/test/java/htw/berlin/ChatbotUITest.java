@@ -67,4 +67,40 @@ public class ChatbotUITest {
         var actual = ui.articleIdsFromOrder("Ich haette gerne einen Burger mit Tomate");
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("helper method articleIdsFromOrder can get the correct article ids")
+    void canGetArticleIds2() {
+        InputParser parser = mock(InputParser.class);
+        when(parser.countKeywords(anyString(), anySet())).thenReturn(Map.of(
+                "Burger", 1,
+                "Ciabatta", 0,
+                "Rindfleisch", 1,
+                "Falafel", 0,
+                "Eisbergsalat", 0,
+                "Rucolasalat", 0,
+                "Tomate", 1,
+                "Gurke", 0,
+                "Ketchup", 1,
+                "Mayo", 1
+        ));
+        ChatbotUI ui = new ChatbotUI(null, null, parser);
+
+        var expected = Arrays.asList(100,300,700,900,910);
+        var actual = ui.articleIdsFromOrder("Ich haette gerne einen Burger mit Rindfleisch,Ketchup und Mayo!!!!!!");
+        assertEquals(expected, actual);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

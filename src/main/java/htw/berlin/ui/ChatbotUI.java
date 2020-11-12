@@ -4,6 +4,7 @@ import htw.berlin.domain.Burger;
 import htw.berlin.service.BurgerBuilder;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ChatbotUI {
     private final UserInputWrapper input;
@@ -36,7 +37,17 @@ public class ChatbotUI {
     // nur public zum einfacheren Testen
     public List<Integer> articleIdsFromOrder(String inputLine) {
         Set<String> keywords = Menu.getAllArticles().keySet();
-        // TODO (2) dann hier mit countKeywords Benutzung implementieren
-        return Collections.emptyList();
+        Map<String,Integer> wantedIngredient = parser.countKeywords(inputLine, keywords);
+        ArrayList<Integer> ingredientNumber = new ArrayList<Integer>();
+
+        wantedIngredient.forEach((key , val) ->
+        {
+                if(val!=0) {
+            ingredientNumber.add(Menu.getAllArticles().get(key));
+            }
+        }
+        );
+        Collections.sort(ingredientNumber);
+        return ingredientNumber;
     }
 }

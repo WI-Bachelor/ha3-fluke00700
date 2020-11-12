@@ -33,6 +33,6 @@ public class ChatbotParserIntegrationTest {
         ChatbotUI ui = new ChatbotUI(input, builder, new CommaAndWhitespaceSplittingInputParser());
 
         assertEquals("Bestellung abschliessen", ui.launch());
-        verify(builder).addIngredientsById(Arrays.asList(100, 300, 900, 700, 500));
+        verify(builder).addIngredientsById(Arrays.asList(100, 300, 500, 700, 900));
     }
 }
