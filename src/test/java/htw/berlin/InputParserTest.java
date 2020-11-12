@@ -42,16 +42,16 @@ public class InputParserTest {
     }
 
     @Test
-    void canCountKeywords3() {
+    void canCountKeywordsIfNull() {
         InputParser classUnderTest = new CommaAndWhitespaceSplittingInputParser();
         Set<String> keywords = new HashSet<>(Arrays.asList("Rindfleisch", "Eisbergsalat", "Tomate", "Ketchup", "Mayo", "Avocado"));
-        String inputLine = "Rindfleisch, Rindfleisch , Rindfleisch, Ketchup, Mayo! und vielleicht Eisber.. ne das waere es ";
+        String inputLine = null;
         var expected = Map.of(
-                "Rindfleisch", 3,
+                "Rindfleisch", 0,
                 "Eisbergsalat", 0,
                 "Tomate", 0,
-                "Ketchup", 1,
-                "Mayo", 1,
+                "Ketchup", 0,
+                "Mayo", 0,
                 "Avocado", 0);
         assertEquals(expected, classUnderTest.countKeywords(inputLine, keywords));
     }
